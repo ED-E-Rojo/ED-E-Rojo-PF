@@ -10,7 +10,6 @@ package ed_equiporojo_pfinal;
  * @author Rodrigo
  */
 
-//Constructor por defecto
 public class Stack<T> {
     private Node<T> top;
     private int size;
