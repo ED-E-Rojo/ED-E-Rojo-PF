@@ -32,6 +32,7 @@ public class Graph {
         return this.v;
     }
     
+    
     public boolean isEdge(int s, int d){
         List<Edge> l = this.g[s];
         Node<Edge> p = l.first;
@@ -44,6 +45,7 @@ public class Graph {
         return false;
     }
     
+   
     public double getEWeight(int s, int d){
         List<Edge> l = this.g[s];
         Node<Edge> p = l.first;
@@ -55,6 +57,7 @@ public class Graph {
         }
         return -1.0;
     }
+    
     
     public void insertE(int s, int d, double w){
         if(!isEdge(s,d)){
@@ -131,6 +134,7 @@ public class Graph {
     
     
     public String DFS(int origin){
+         //Inicializamos las variables globales
         visited = new boolean [v+1];
         parent = new int[v+1];
         path = Integer.toString(origin)+"->";
@@ -138,15 +142,15 @@ public class Graph {
     }
     
     private String recursiveDFS(int origin){
-        if (!visited[origin]){
-            visited[origin]=true;
-            List<Edge> l = adjacentTo(origin);
-            l.pointer=l.first;
-            while(l.pointer!=null){
-                int a=(int)l.pointer.data.getDest();
+        if (!visited[origin]){ //Si nodo no ha sido visitado
+            visited[origin]=true; //Lo marcamos como visitado
+            List<Edge> l = adjacentTo(origin); //Obtenemos su lista de adyacencia
+            l.pointer=l.first; //Iniciamos el recorrido de la lista
+            while(l.pointer!=null){ //Mientras no lleguemos al final de la lista
+                int a=(int)l.pointer.data.getDest(); //Obtenemos el adyacente
                 parent[a]=origin;
-                recursiveDFS(a);
-                l.pointer = l.pointer.next;
+                recursiveDFS(a); //Llamamos al método nuevamente con el adyacente
+                l.pointer = l.pointer.next; //nos movemos al siguiente nodo
             }
         }
         if (origin==this.v){
@@ -161,6 +165,6 @@ public class Graph {
                 }
             }
         }
-        return path;
+        return path; //Devolvemos la trayectoria
     }
 }
