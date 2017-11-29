@@ -23,7 +23,7 @@ public class Stack<T> {
     //Constructor con primer elemento
     public Stack(T d){
         Node<T> node = new Node<T>(d);
-        top=node;
+        top=node; 
         size=1;
     }
     
@@ -35,39 +35,39 @@ public class Stack<T> {
     //Inserta un nuevo nodo en la cima de la pila
     public void push(T d){
         Node<T> node = new Node<T>(d);
-        node.next=top;
-        top=node;
-        size++;
+        node.next=top; //El apuntador next de node es igual a top
+        top=node; // Top ahora apunta a nodo
+        size++; // Se incrementa el tamaño de la pila
     }
     
     //Elimina un valor de la cima de la pila y lo devuelve.
     public T pop(){
          T d;
-        if (!isEmpty()){
-            d = top.data;
-            top=top.next;
-            size--;
-            return d;
-        }else{
-            return null;
+        if (!isEmpty()){ //Si no esta vacia
+            d = top.data; //Guardamos el valor de top en d
+            top=top.next; //Movemos el apuntador de top
+            size--; //Se reduce el tamaño de la fila
+            return d; // Regresamos el anterior dato de top
+        }else{ //Si esta vacia
+            return null; //regresa nulo
         }
     }
     
     //Devuelve el valor de la cima
     public T getTop(){
-         if (!isEmpty()){
-            return top.data;}
-        else{
-            return null;
+         if (!isEmpty()){ //Si no esta vacio
+            return top.data;} //Regresasoms el valor de top
+        else{ //Si esta vacio
+            return null; //NO regresamos nada
         }
     }
     
     //Muestra el contenido de la pil
     public void showStack(){
         Node<T> t = top;
-        while (t!=null){
-            t.printS();
-            t=t.next;
+        while (t!=null){ //Mientras que t sea null
+            t.printS(); //imprimimos t
+            t=t.next; // t se mueve 
         }
         System.out.println("Null"+"/n");
     }
@@ -79,8 +79,8 @@ public class Stack<T> {
     
     //Vaciar Pila
     public void deleteStack(){
-        top=null;
-        size=0;
+        top=null; //top ahora apunta a nulo
+        size=0; // El tamaño de la pila se vuelve 0
     }
     
 }
