@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package ed_equiporojo_pfinal;
-
 /**
  *
  * @author Rodrigo
@@ -40,5 +39,4 @@ public class Edge {
     public String toString() {
         return "Edge{" + "dest=" + dest + ", weight=" + weight + '}';
     }
-    
 }
