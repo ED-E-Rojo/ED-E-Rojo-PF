@@ -30,34 +30,34 @@ public class Queue<T> {
     //Inserta un nuevo nodo al final de la fila
     public void enqueue(T d){
         Node node = new Node(d);
-        if(isEmpty()){
-            front=rear=node;
-            size=1;
-        }else{
-            rear.next=node;
-            rear=node;
-            size++;
+        if(isEmpty()){ //Si esta vacio
+            front=rear=node; //Los apuntadores front y rear apuntan al nuevo nodo
+            size=1; //El tamaño de la fila se vuelve 1
+        }else{ //Si no esta vacia
+            rear.next=node; //El apuntador next de rear señalara al nuevo nodo
+            rear=node; //Rear se recorre y apunta al nuevo nodo
+            size++; //Se incrementa el tamaño de la pila
         }
     }
     
     //Elimina el primer valor de la fila
     public T dequeue(){
-        if (isEmpty()){
-            return null;
-        }else{
+        if (isEmpty()){ //Si esta vacio
+            return null // regresamos nulo
+        }else{ // Si no esta vacio
             Node<T> fd = front;
-            front=front.next;
-            size--;
-            return fd.data;
+            front=front.next; //recorremos front
+            size--; //Se reduce el tamaño de la pila
+            return fd.data; //Regresamos el dato de front
         }
     }
    
     //Devuelve el valor del frente de la fila
     public T getFront(){
-        if (isEmpty()){
-        return null;
-        }else{
-            return front.data;
+        if (isEmpty()){ //Si esta vacio
+        return null; //Regresamos nulo
+        }else{ // Si no esta vacio
+            return front.data; //Regresamos el valor de front
         }
     }
     
@@ -73,18 +73,18 @@ public class Queue<T> {
     
     //Vaciar fila
     public void clearQueue(){
-        front=rear=null;
-        size=0;
+        front=rear=null; //Apuntamos front y rear a nulo
+        size=0; //El tamaño de la pila se vuelve 0
     }
     
     //Muestra el contenido de la fila
     public void showQueue(){
         System.out.println("front->");
         Node<T> p = front;
-        if (p==null) System.out.println("null");
-        while(p!=null){
-            p.print();
-            p=p.next;
+        if (p==null) System.out.println("null"); //Si p es nulo imprimimos nuelo
+        while(p!=null){ //Mientras que p sea nulo
+            p.print(); //Imprimimos p
+            p=p.next; //Movemos p un lugar
         }
         System.out.println("<-rear" + "/n");
     }
