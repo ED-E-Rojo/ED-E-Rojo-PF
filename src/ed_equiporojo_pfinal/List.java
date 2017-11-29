@@ -15,6 +15,7 @@ public class List<T> {
     Node<T> pointer;
     int length;
 
+    //Constructor
     public List() {
         first=null;
         last=null;
@@ -22,62 +23,67 @@ public class List<T> {
         length=0;
     }
     
+    //Insertar al inicio
     public void insertFirst(T n){
         Node<T> node = new Node(n);
-        if (isEmpty()){
-            first=last=node;
-        } else{
-            node.next=last;
-            first = node;
+        if (isEmpty()){ //Si la lista está vacía
+            first=last=node; //Apuntadores last y first apuntan a Nodo
+        } else{ //Si la lista tiene elementos
+            node.next=last; //Apuntador next del nuevo nodo apunta al primer nodo
+            first = node; //Apuntador first apunta al nuevo nodo
         }
-        length++;
+        length++; //Incrementamos el contador de nodos
     }
     
+    //Insertar al final
     public void insertLast(T n){
         Node<T> node =new Node(n);
-        if (isEmpty()){
-            first=last=node;
-        } else {
-            last.next = node;
-            last = node;
-        }
-        length++;
+        if (isEmpty()){ //Si la lista está vacía
+            first=last=node; //Apuntadores last y first apuntan a Nodo
+        } else { //Si la lista tiene elementos
+            last.next = node;  //El apuntador next del último nodo apunta al nuevo nodo
+            last = node; // El apuntador last apunta al nuevo nodo
+        } 
+        length++; //Incrementamos el contador de nodos;
     }
     
-    public void deleteList(){
+    //Eliminar la lista
+    public void deleteList(){ 
         first = last= pointer = null;
         length = 0;
     }
     
+    //Eliminar el primer nado
     public void deleteFirst(){
-        if (!isEmpty()){
-            if (first==last){
+        if (!isEmpty()){ //Si la lista no está vacía
+            if (first==last){ //Si la lista tiene solo un elemento
                 deleteList();
-            } else {
-                first=first.next;
-                length--;
+            } else { //Lista tiene mas de un elemento
+                first=first.next; //El apuntador first  apunta a su siguente nodo 
+                length--; //Decrementamos el contador de nodos;
             }
         } 
     }
     
     public void deleteLast(){
-        if (!isEmpty()){
-            if (first==last){
+        if (!isEmpty()){ //Si la lista no está vacía
+            if (first==last){ //Si la lista tiene solo un elemento
                 deleteList();
             } else {
-                pointer = first;
-                while(pointer.next!=last){
-                    pointer=pointer.next;
+                pointer = first; //pointer apunta al primer nodo
+                while(pointer.next!=last){ //Mientras que el nodo siugiente de pointer sea diferente al último
+                    pointer=pointer.next; //avanzamos pointer a la siguiente posición
                 }
-                pointer.next=null;
-                last = pointer;
-                length--;
+                pointer.next=null; //el epuntador next de pinter apunta a null
+                last = pointer; // el apuntador last ahora apunta a pointer
+                length--; //Decrementamos el contador de nodos;
             }
         } 
     }
     
+    //Eliminar un nodo
     public void deleteNode(T d){
-        if(!isEmpty()){
+        if(!isEmpty()){ //Si la lista no está vacía
         pointer=first;
         if (pointer.data==d){//Si el elemento buscado es el primero
             deleteFirst();
@@ -95,6 +101,7 @@ public class List<T> {
     }
     }
     
+    //Mostrar lista
     public void showList(){
         if (!isEmpty()){//Si la lista no está vacía
             pointer=first; //Colocamos pointer en el primer nodo
