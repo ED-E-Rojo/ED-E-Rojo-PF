@@ -32,41 +32,42 @@ public class Graph {
         return this.v;
     }
     
-    
+    //Determina si edge esta en el grafo
     public boolean isEdge(int s, int d){
         List<Edge> l = this.g[s];
         Node<Edge> p = l.first;
-        for(int i=0;i<l.length;i++){
-            if (d == p.data.getDest()){
-                return true;
+        for(int i=0;i<l.length;i++){ //Rcorremos la lista
+            if (d == p.data.getDest()){ //Si d es igual al destino de p
+                return true; //Regresamos verdadero
             }
-            p = p.next;
+            p = p.next; //Movemos p un lugar
         }
-        return false;
+        return false; //Regresamos falso
     }
     
-   
+    //Regresamos el peso de la arista
     public double getEWeight(int s, int d){
         List<Edge> l = this.g[s];
         Node<Edge> p = l.first;
-        for(int i=0;i<l.length;i++){
-            if (d == p.data.getDest()){
-                return p.data.getWeight();
+        for(int i=0;i<l.length;i++){ //Recorremos la lista
+            if (d == p.data.getDest()){ //Si d es igual al destino de p
+                return p.data.getWeight(); //Regresa el peso de p
             }
-            p = p.next;
+            p = p.next; //Movemos p un lugar
         }
-        return -1.0;
+        return -1.0; //Regresamos -1
     }
     
-    
+    //Insertamos una arista
     public void insertE(int s, int d, double w){
-        if(!isEdge(s,d)){
-            this.g[s].insertLast(new Edge(d,w));
-            this.e++;
-        }else{
-            System.out.println("No es posible insertar el elemento, ("+s+","+d+") ya se encuentra en el grafo");
+        if(!isEdge(s,d)){ //Si no exite la arista
+            this.g[s].insertLast(new Edge(d,w)); //INgresamos una arista a la lista
+            this.e++; //Aumentamos el tamaño de la lista
+        }else{ //Si, si existe la arista
+            System.out.println("No es posible insertar el elemento, ("+s+","+d+") ya se encuentra en el grafo"); //Mostramos un mensaje de que ya esta la arista en el grafo
         }
     }
+    
     
     public void insertE(int s, int d){
         insertE(s,d,0.0);
@@ -129,7 +130,7 @@ public class Graph {
                 path += "->";
             }
         }
-        return path;
+        return path; //Devolvemos la trayectoria
     }
     
     
