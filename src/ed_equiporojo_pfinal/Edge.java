@@ -17,23 +17,19 @@ public class Edge {
         this.dest = dest;
         this.weight = 0.0;
     }
-
     //Consturctor con un elemento
     public Edge(int dest, double weight) {
         this.dest = dest; 
         this.weight = weight;
     }
-
     //Obtener destino
     public double getDest() {
         return dest;
     }
-
     //Obtener peso
     public double getWeight() {
         return weight;
     }
-
     //Imprimir edge
     @Override
     public String toString() {
