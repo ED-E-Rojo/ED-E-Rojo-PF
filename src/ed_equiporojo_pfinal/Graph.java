@@ -16,10 +16,10 @@ public class Graph {
     private String path = "";
     int parent[];
     
-    public Graph(int v){
+    public Graph(int v){ //Constructor con el numero de vertices
         this.v=v;
         this.e=0;
-        g = new List[v+1];
+        g = new List[v+1]; //El numero de vertices se aumenta en uno para evitar confusiones con tamaño de arreglo
         for(int i=1; i<v+1; i++){
             g[i]= new List<Edge>(); //Instancía una lista en cada elemento del arreglo
         }
@@ -77,24 +77,24 @@ public class Graph {
         return this.g[s];
     }
     
-    public String to_string(){
+    public String to_string(){ //Mostrar el grafo como un String
         String r="";
-        for (int i=1; i<this.v+1; i++){
-            r += "\nVértice "+ Integer.toString(i) +" ";
-            List<Edge> lp = adjacentTo(i);
-            if (lp.isEmpty()){
-                r += "sin Adyacentes.\n\n";
-            }else{
-                r += "con Adyacentes:\n";
-                lp.pointer=lp.first;
-                for (int j=1; j<=lp.length; j++){
-                    r += lp.pointer.data.toString()+"\n";
-                    lp.pointer=lp.pointer.next;
+        for (int i=1; i<this.v+1; i++){ //Recorremos todo el vector de vertices
+            r += "\nVértice "+ Integer.toString(i) +" "; //Tomamos el vertice y lo hacemos String
+            List<Edge> lp = adjacentTo(i); //Obtenemos adyacencias de ese vertice
+            if (lp.isEmpty()){ //Si lista de adyacencias esta vacia
+                r += "sin Adyacentes.\n\n"; 
+            }else{ //Si no esta vacia
+                r += "con Adyacentes:\n"; 
+                lp.pointer=lp.first; //Usamos puntero auxiliar desde el inicio
+                for (int j=1; j<=lp.length; j++){ //Recorremos lista de adyacencias
+                    r += lp.pointer.data.toString()+"\n"; //Agregamos al String del vertice, todas las adyacencias
+                    lp.pointer=lp.pointer.next; //Recorremos nuestro puntero auxiliar
                 }
             }
         }
-        System.out.println(r);
-        return r;
+        System.out.println(r); //Mostramos el grafo
+        return r; //Regresamos el grafo en String
     }
     
     public String BFS(int origin){
@@ -120,14 +120,14 @@ public class Graph {
                 l.pointer=l.pointer.next;
             }
         }
-        Stack fpath = new Stack();
-        fpath.push(v);
-        for(int i=v; i!=1;i=parent[i]){
+        Stack fpath = new Stack(); //Creamos un stack para mostrar la trayectoria desde el arreglo
+        fpath.push(v); 
+        for(int i=v; i!=1;i=parent[i]){ //Colocaremos en la pila cada elemento, empezando en el final
             fpath.push(parent[i]);
-        }while(fpath.getTop()!=null){
-            path+=fpath.pop();
-            if(fpath.getTop()!=null){
-                path += "->";
+        }while(fpath.getTop()!=null){ //Mientras que la cima no sea nula
+            path+=fpath.pop(); //La trayectoria ira guardando cada valor del arreglo
+            if(fpath.getTop()!=null){ //Cuando su cima sea nula
+                path += "->"; //Agregaremos este simbolo para dar continuidad a la trayectoria
             }
         }
         return path; //Devolvemos la trayectoria
@@ -155,14 +155,14 @@ public class Graph {
             }
         }
         if (origin==this.v){
-            Stack fpath = new Stack();
+            Stack fpath = new Stack(); //Creamos un stack para mostrar la trayectoria desde el arreglo
             fpath.push(v);
-            for(int i=v; parent[i]!=1;i=parent[i]){
+            for(int i=v; parent[i]!=1;i=parent[i]){ //Colocaremos en la pila cada elemento, empezando en el final
                 fpath.push(parent[i]);
-            } while(fpath.getTop()!=null){
-                path+=fpath.pop();
-                if(fpath.getTop()!=null){
-                    path += "->";
+            } while(fpath.getTop()!=null){ //Mientras que la cima no sea nula
+                path+=fpath.pop(); //La trayectoria ira guardando cada valor del arreglo
+                if(fpath.getTop()!=null){ //Cuando su cima sea nula
+                    path += "->"; //Agregaremos este simbolo para dar continuidad a la trayectoria
                 }
             }
         }
