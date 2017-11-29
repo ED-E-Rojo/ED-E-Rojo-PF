@@ -32,7 +32,7 @@ public class Stack<T> {
         return size;
     }
     
-    //Devuelve el tamaño de la pila
+    //Inserta un nuevo nodo en la cima de la pila
     public void push(T d){
         Node<T> node = new Node<T>(d);
         node.next=top;
