@@ -9,25 +9,31 @@ package ed_equiporojo_pfinal;
  *
  * @author Rodrigo
  */
+
+//Constructor por defecto
 public class Stack<T> {
     private Node<T> top;
     private int size;
     
+    //Constructor por defecto
     public Stack(){
         top = null;
         size = 0;
     }
     
+    //Constructor con primer elemento
     public Stack(T d){
         Node<T> node = new Node<T>(d);
         top=node;
         size=1;
     }
     
+    //Devuelve el tamaño de la pila
     public int getSize(){
         return size;
     }
     
+    //Devuelve el tamaño de la pila
     public void push(T d){
         Node<T> node = new Node<T>(d);
         node.next=top;
@@ -35,6 +41,7 @@ public class Stack<T> {
         size++;
     }
     
+    //Elimina un valor de la cima de la pila y lo devuelve.
     public T pop(){
          T d;
         if (!isEmpty()){
@@ -47,6 +54,7 @@ public class Stack<T> {
         }
     }
     
+    //Devuelve el valor de la cima
     public T getTop(){
          if (!isEmpty()){
             return top.data;}
@@ -55,6 +63,7 @@ public class Stack<T> {
         }
     }
     
+    //Muestra el contenido de la pil
     public void showStack(){
         Node<T> t = top;
         while (t!=null){
@@ -64,10 +73,12 @@ public class Stack<T> {
         System.out.println("Null"+"/n");
     }
     
+    //Está vacía?
     public boolean isEmpty(){
         return size==0;
     }
     
+    //Vaciar Pila
     public void deleteStack(){
         top=null;
         size=0;
