@@ -15,8 +15,8 @@ public class ED_EquipoRojo_PFinal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Graph test = new Graph(13);
-        test.insertE(1,2);
+        Graph test = new Graph(13); //Creacion de un grafo con 13 vertices
+        test.insertE(1,2); //Insercion de cada uno de los vertices con sus relaciones
         test.insertE(2,3);
         test.insertE(2,5);
         test.insertE(3,8);
@@ -32,8 +32,7 @@ public class ED_EquipoRojo_PFinal {
         test.insertE(9,13);
         test.insertE(11,6);
         test.insertE(12,9);
-        System.out.println(test.DFS(1));
+        System.out.println(test.DFS(1)); //Prueba de ambas busquedas con el grafo creado para mostrar el camino
         System.out.println(test.BFS(1));
     }
-    
 }
