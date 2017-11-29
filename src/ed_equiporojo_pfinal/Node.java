@@ -13,20 +13,24 @@ public class Node<T> {
     Node next;
     T data;
     
+    //Constructor por defecto
     public Node() {
         data=null;
         next=null;
     }
     
+    //Consturctor con un elemento
     public Node(T d) {
-        data=d;
+        data=d; //agregamos :data(d) para indicar que utilizaremos el constructor default del t de dato que asignemos
         next=null;
     }
     
+    //Imprimir Nodo
     public void print(){
         System.out.println(data+"->");
     }
     
+    //Imprimir Nodo para stack
     public void printS(){
         System.out.println(data +"%n"+ "↓"+"%n");
     }
