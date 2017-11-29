@@ -131,17 +131,14 @@ public class Graph {
             }
         }
         return path; //Devolvemos la trayectoria
-    }
-    
-    
+    }    
     public String DFS(int origin){
          //Inicializamos las variables globales
         visited = new boolean [v+1];
         parent = new int[v+1];
         path = Integer.toString(origin)+"->";
         return path=("Recorrido DFS\n" + recursiveDFS(origin) +"\n");
-    }
-    
+    }    
     private String recursiveDFS(int origin){
         if (!visited[origin]){ //Si nodo no ha sido visitado
             visited[origin]=true; //Lo marcamos como visitado
